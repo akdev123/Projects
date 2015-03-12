@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?scenebuilder-stylesheet ebm.css?>
+
+<AnchorPane id="AnchorPane" fx:id="EBMExtractorView" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml" fx:controller="ebmextractor.EBMExtractorFXMLController">
+    <children>
+        <Label layoutX="424.0" layoutY="14.0" text="EBM Extractor" />
+        <Button fx:id="but_Start" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#act_Start" text="Start" />
+    </children>
+</AnchorPane>

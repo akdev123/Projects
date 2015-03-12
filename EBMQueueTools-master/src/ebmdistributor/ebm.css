@@ -1,0 +1,30 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+
+
+.mainFxmlClass {
+    -fx-font-family: Myriad Web Pro Bold; 
+    -fx-font-size: 10px; 
+    -fx-font-weight: bold; 
+    -fx-base: #b6e7c9;
+}
+
+#vistaHolder {
+    -fx-background-color: lightgrey;
+}
+
+#b_SwitchToSettings {
+    -fx-graphic:  url("images/settings48x48.png");
+}
+
+#b_SwitchToDistribution {
+    -fx-graphic:  url("images/hub48x48.png");
+}
+
+#but_Start {
+    -fx-graphic:  url("images/play48x48.png");
+}
+
+
