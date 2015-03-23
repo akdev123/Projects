@@ -37,7 +37,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.crypto.Mac;
-import org.apache.commons.codec.binary.Hex;
+//import org.apache.commons.codec.binary.Hex;
 import com.sun.org.apache.xerces.internal.impl.dv.util.Base64;
 //import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils.Collections;
 
