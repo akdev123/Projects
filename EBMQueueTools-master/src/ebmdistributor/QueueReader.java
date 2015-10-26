@@ -2,16 +2,6 @@
 
 package ebmdistributor;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- *
- * @author akhare
- */
 
 
 import javafx.concurrent.Task;
@@ -36,10 +26,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import javafx.stage.Window;
-//import org.controlsfx.control.action.Action;
-//import org.controlsfx.dialog.Dialogs;
-//import org.controlsfx.*;
-//import jfx.messagebox.MessageBox;
 
  
  
@@ -74,10 +60,7 @@ import javafx.stage.Window;
     public void act_StopProcessing() 
     { this.cancel();}
     
-   /* public QueueReader title(final String title) {
-        this.title = title;
-        return this;
-    }*/
+   
  
  
 
@@ -188,7 +171,7 @@ import javafx.stage.Window;
                                                         + " AND TypeMask_ti IN (" + TypeMask + ") "
                                                         + " ORDER BY DTSId_int ASC "
                                                         + " LIMIT " + NumberOfQueueContactsToProcessPerThread ;
-                                        // System.out.println("Let's see the QueryString" +QueryString);
+                                        
                                         //NOTE: with the 'MOD' CONCUR_UPDATABLE isn't necessary
                                         SelectQueueStmt = connRemote.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
                                         SelectQueueRS = SelectQueueStmt.executeQuery(QueryString);
@@ -241,25 +224,21 @@ import javafx.stage.Window;
                                                             + " ) " 
                                                             + " VALUES "
                                                             + " ( "
-                                                            + " " + SelectQueueRS.getInt("BatchId_bi") + ", " // <{BatchId_bi: }>, "
-                                                            + " " + SelectQueueRS.getInt("DTSStatusType_ti") + ", " // <{DTSStatusType_ti: }>, "
-                                                            + " " + SelectQueueRS.getInt("TimeZone_ti") + ", " // <{TimeZone_ti: }>, "
-                                                            + " " + SelectQueueRS.getInt("CurrentRedialCount_ti") + ", " // <{CurrentRedialCount_ti: }>, "
-                                                            + " " + SelectQueueRS.getInt("UserId_int") + ", " // <{UserId_int: }>, "
-                                                            + " " + SelectQueueRS.getInt("CampaignTypeId_int") + ", " // <{CampaignTypeId_int: }>, "
-                                                            + " '" + SelectQueueRS.getString("Scheduled_dt") + "', " // <{Scheduled_dt: }>, "
-                                                            + " '" + escapeSQL(SelectQueueRS.getString("DialString_vch")) + "', " // <{PhoneStr1_vch: }>, "
+                                                            + " " + SelectQueueRS.getInt("BatchId_bi") + ", " 
+                                                            + " " + SelectQueueRS.getInt("DTSStatusType_ti") + ", " 
+                                                            + " " + SelectQueueRS.getInt("TimeZone_ti") + ", " 
+                                                            + " " + SelectQueueRS.getInt("CurrentRedialCount_ti") + ", " 
+                                                            + " " + SelectQueueRS.getInt("UserId_int") + ", " 
+                                                            + " " + SelectQueueRS.getInt("CampaignTypeId_int") + ", " 
+                                                            + " '" + SelectQueueRS.getString("Scheduled_dt") + "', " 
+                                                            + " '" + escapeSQL(SelectQueueRS.getString("DialString_vch")) + "', " 
                                                             + " 'EBMQueueTools', " // <{Sender_vch: }>, "
-                                                            + " '" + escapeSQL(SelectQueueRS.getString("XMLControlString_vch")) + "' " // <{XMLControlString_vch: }>, "
+                                                            + " '" + escapeSQL(SelectQueueRS.getString("XMLControlString_vch")) + "' " 
                                                             + ") ";
 
                                                          }
 
-                                                        // System.out.println("Let's see the Second QueryString:"+QueryStringInsertRemote);
-                                                        // SelectQueueRS.updateInt( "CallDetailsStatusId_ti", abs(ESID) );
-                                                        //we don't need this
-                                                        // SelectQueueRS.updateInt( "DTSStatusType_ti", 3 );
-                                                        // SelectQueueRS.updateString( "Queued_DialerIP_vch", ip );
+                                                        
 
 
 
@@ -364,18 +343,7 @@ import javafx.stage.Window;
                                        connRemote.commit();
                                        System.out.println("Prepared Statement:"+pst);
                                        System.out.println("Remote Dialer Just Completed is:" +ip);
-                                       //connRemote.setAutoCommit(true);
                                        
-                                    //   MessageBox.show(primaryStage,
-                                        //"Sample of error dialog.\n\nDialog option is below.\n[MessageBox.ICON_ERROR]",
-                                   // "Error dialog",
-                                   // MessageBox.ICON_ERROR);
-                                       
-                                      // Action response = Dialogs.create();
-                                     // .title("You do want dialogs right?")
-                                      //  .masthead("Just Checkin'")
-                                      //  .message( "I was a bit worried that you might not want them, so I wanted to double check.")
-                                      //  .showConfirm();
                                         
                                         
                           }// END OF For Each Loop
@@ -383,24 +351,12 @@ import javafx.stage.Window;
                 }// END OF TRY BLOCK
                 catch (SQLException ex) 
                 {
-                    //if(!flag){
-                    // handle any errors
-                    //System.out.println("SQLException: " + ex.getMessage());
-                    //System.out.println("SQLState: " + ex.getSQLState());
-                    //System.out.println("VendorError: " + ex.getErrorCode());
                     System.out.println(" Outer StackTrace Below");
                     ex.printStackTrace();
                    // }
                    // flag = true;
                     
-                    
-                 /*   
-                 MessageBox.show(primaryStage,
-                "Sample of information dialog.\n\nDialog option is below.\n[MessageBox.ICON_INFORMATION | MessageBox.OK | MessageBox.CANCEL]",
-                "Information dialog",
-                 MessageBox.ICON_INFORMATION | MessageBox.OK | MessageBox.CANCEL);
-                    
-                          */   
+                
                     
                  try {
                 String QueryStringInsertIntoErrorLogs = "";
@@ -425,20 +381,20 @@ import javafx.stage.Window;
                                                     + " ) "
                                                     + " VALUES "
                                                     + " ( "
-                                                    //+ " NULL, " // ErrorLogIdInt
-                                                    + " '2002' , " // ErrorNumber_int
-                                                    + " '"+dateFormat.format(date)+" ' , " //created_dt // " + dateFormat.format(date) + "
-                                                    + " 'SimpleX Error Notification', " //Subject_vch
-                                                    + " 'Error Simple X Queue', " //Message_VCH
-                                                    + " 'No Troubleshooting Tips Specified', " //TroubleshootingTips_vch
-                                                    + " '" + ex.getSQLState() + "' , " //Catchtype_vch " + ex.getSQLState() + "
-                                                    + " '" + ex.getMessage() + "' ," //+ SelectResultsRS.getInt("CatchMessage_vch") + " + ex.getMessage() + "
-                                                    + " NULL, " //" + SelectResultsRS.getInt("CatchDetail_vch") + "
-                                                    + " 'ebmdevii.messagebroadcast.com'," // SelectResultsRS.getInt("Host_vch")
-                                                    + " NULL, " //" + SelectResultsRS.getInt("Referer_vch") + "
-                                                    + " 'CFSCHEDULE', " //" + SelectResultsRS.getInt("UserAgent_vch") + "
-                                                    + " 'NULL', " //" + SelectResultsRS.getInt("Patch_vch") + "
-                                                    + " 'DBSOURCE=BishopDev' " //" + SelectResultsRS.getInt("Querystring_vch") + "
+                                                    
+                                                    + " '2002' , " 
+                                                    + " '"+dateFormat.format(date)+" ' , " 
+                                                    + " 'SimpleX Error Notification', " 
+                                                    + " 'Error Simple X Queue', " 
+                                                    + " 'No Troubleshooting Tips Specified', " 
+                                                    + " '" + ex.getSQLState() + "' , " 
+                                                    + " '" + ex.getMessage() + "' ," 
+                                                    + " NULL, " 
+                                                    + " 'ebmdevii.messagebroadcast.com'," 
+                                                    + " NULL, " 
+                                                    + " 'CFSCHEDULE', " 
+                                                    + " 'NULL', " 
+                                                    + " 'DBSOURCE=BishopDev' " 
                                                     + " ) ";
                 System.out.println("the length of the Query String for Error is :" +QueryStringInsertIntoErrorLogs.length());
                 System.out.println("Query Output :" +QueryStringInsertIntoErrorLogs);
@@ -499,8 +455,7 @@ import javafx.stage.Window;
                     //connRemote.setAutoCommit(true);
                 }// ENd Of Finally
  
-         // Call controller callback when tasdk is complete 
-        //QRVC.QueueReaderCallBackonComplete(CurrModValue);
+         
  
         return iterations;
     }

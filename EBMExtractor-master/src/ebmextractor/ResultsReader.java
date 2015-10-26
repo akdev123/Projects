@@ -26,8 +26,7 @@ public class ResultsReader extends Task<Integer>
     private static String RemotePass = "RX1664";
     private static String MainUser = "EBMSQLUser";
     private static String MainPass = "eSU!0126";
-    // private static String RemoteSQLServerUser = "sa";
-    // private static String RemoteSQLServerPass = "F6!RjYKB77P";
+    
     // Alllows different systems to use the same RXDialers
     private static int ESID = -15;
     private int CurrModValue;
@@ -83,7 +82,7 @@ public class ResultsReader extends Task<Integer>
         }
         String maindbsql = null;
         maindbsql = "SELECT IP_vch FROM simplexfulfillment.device_test WHERE Enabled_dt = 1 ";
-        //System.out.println("Query String is as follows:"+maindbsql);
+        
         Map<String,Connection> connections = new HashMap<>();
         DeviceStmt = connRemote.createStatement();
         DeviceRS = DeviceStmt.executeQuery(maindbsql);
@@ -243,57 +242,57 @@ public class ResultsReader extends Task<Integer>
                                     + " VALUES "
                                                 + " ( "
                                                 + " NULL, "
-                                                + " " + SelectResultsRS.getInt("RXCallDetailId_int") + ", " // #ExtractFromDialer.RXCallDetailId_int#,
-                                                + " " + SelectResultsRS.getInt("DTSID_int") + ", " //#ExtractFromDialer.DTSID_int#,
-                                                + " " + SelectResultsRS.getInt("BatchId_bi") + ", " //#ExtractFromDialer.BatchId_bi#,
-                                                + " " + SelectResultsRS.getInt("PhoneId_int") + ", " //#ExtractFromDialer.PhoneId_int#,
-                                                + " " + SelectResultsRS.getInt("TotalObjectTime_int") + ", " //#ExtractFromDialer.TotalObjectTime_int#,
-                                                + " " + SelectResultsRS.getInt("TotalCallTimeLiveTransfer_int") + ", " //#ExtractFromDialer.TotalCallTimeLiveTransfer_int#,
-                                                + " " + SelectResultsRS.getInt("TotalCallTime_int") + ", " //#ExtractFromDialer.TotalCallTime_int#,
-                                                + " " + SelectResultsRS.getInt("TotalConnectTime_int") + ", " //#ExtractFromDialer.TotalConnectTime_int#,
-                                                + " " + SelectResultsRS.getInt("ReplayTotalCallTime_int") + ", " //#ExtractFromDialer.ReplayTotalCallTime_int#,
-                                                + " " + SelectResultsRS.getInt("TotalAnswerTime_int") + ", " //#ExtractFromDialer.TotalAnswerTime_int#,
-                                                + " " + SelectResultsRS.getInt("UserSpecifiedLineNumber_si") + ", " //#ExtractFromDialer.UserSpecifiedLineNumber_si#,
-                                                + " " + SelectResultsRS.getInt("NumberOfHoursToRescheduleRedial_si") + ", " //#ExtractFromDialer.NumberOfHoursToRescheduleRedial_si#,
-                                                + " " + SelectResultsRS.getInt("TransferStatusId_ti") + ", " //#ExtractFromDialer.TransferStatusId_ti#,
-                                                + " " + SelectResultsRS.getInt("IsHangUpDetected_ti") + ", " //#ExtractFromDialer.IsHangUpDetected_ti#,
-                                                + " " + SelectResultsRS.getInt("IsOptOut_ti") + ", " //#ExtractFromDialer.IsOptOut_ti#,
-                                                + " " + SelectResultsRS.getInt("IsMaxRedialsReached_ti") + ", " //#ExtractFromDialer.IsMaxRedialsReached_ti#,
-                                                + " " + SelectResultsRS.getInt("IsRescheduled_ti") + ", " //#ExtractFromDialer.IsRescheduled_ti#,
-                                                + " " + SelectResultsRS.getInt("CallResult_int") + ", " //#ExtractFromDialer.CallResult_int#,
-                                                + " " + SelectResultsRS.getInt("SixSecondBilling_int") + ", " //#ExtractFromDialer.SixSecondBilling_int#,
-                                                + " " + SelectResultsRS.getInt("SystemBilling_int") + ", " //#ExtractFromDialer.SystemBilling_int#,
-                                                + " '" + SelectResultsRS.getString("RXCDLStartTime_dt") + "', " //'#ExtractFromDialer.RXCDLStartTime_dt#',
-                                                + " '" + SelectResultsRS.getString("CallStartTime_dt") + "', " //'#ExtractFromDialer.CallStartTime_dt#',
-                                                + " '" + SelectResultsRS.getString("CallEndTime_dt") + "', " //'#ExtractFromDialer.CallEndTime_dt#',
-                                                + " '" + SelectResultsRS.getString("CallStartTimeLiveTransfer_dt") + "', " //'#ExtractFromDialer.CallStartTimeLiveTransfer_dt#',
-                                                + " '" + SelectResultsRS.getString("CallEndTimeLiveTransfer_dt") + "', " //'#ExtractFromDialer.CallEndTimeLiveTransfer_dt#',
-                                                + " '" + SelectResultsRS.getString("CallResultTS_dt") + "', " //'#ExtractFromDialer.CallResultTS_dt#',
-                                                + " '" + SelectResultsRS.getString("PlayFileStartTime_dt") + "', " //'#ExtractFromDialer.PlayFileStartTime_dt#',
-                                                + " '" + SelectResultsRS.getString("PlayFileEndTime_dt") + "', " //'#ExtractFromDialer.PlayFileEndTime_dt#',
-                                                + " '" + SelectResultsRS.getString("HangUpDetectedTS_dt") + "', " //'#ExtractFromDialer.HangUpDetectedTS_dt#',
-                                                + " '" + SelectResultsRS.getString("Created_dt") + "', " //'#ExtractFromDialer.Created_dt#',
-                                                + " '" + SelectResultsRS.getString("DialerName_vch") + "', " //'#ExtractFromDialer.DialerName_vch#',
-                                               + " '" + ip + "', "// + " ' 10.11.0.164', " // //'#inpDialerIPAddr#',
-                                                + " '" + SelectResultsRS.getString("CurrTS_vch") + "', " //'#ExtractFromDialer.CurrTS_vch#',
-                                                + " '" + SelectResultsRS.getString("CurrVoice_vch") + "', " //'#ExtractFromDialer.CurrVoice_vch#',
-                                                + " '" + SelectResultsRS.getString("CurrTSLiveTransfer_vch") + "', " //'#ExtractFromDialer.CurrTSLiveTransfer_vch#',
-                                                + " '" + SelectResultsRS.getString("CurrVoiceLiveTransfer_vch") + "', " //'#ExtractFromDialer.CurrVoiceLiveTransfer_vch#',
-                                                + " '" + SelectResultsRS.getString("CurrCDP_vch") + "', " //'#ExtractFromDialer.CurrCDP_vch#',
-                                                + " '" + SelectResultsRS.getString("CurrCDPLiveTransfer_vch") + "', " //'#ExtractFromDialer.CurrCDPLiveTransfer_vch#',
-                                                + " '" + escapeSQL(SelectResultsRS.getString("DialString_vch")) + "', " //'#ExtractFromDialer.DialString_vch#',
-                                                + " " + SelectResultsRS.getInt("RedialNumber_int") + ", " //#ExtractFromDialer.RedialNumber_int#,
-                                                + " " + SelectResultsRS.getInt("TimeZone_ti") + ", " //#ExtractFromDialer.TimeZone_ti#,
-                                                + " " + SelectResultsRS.getInt("MessageDelivered_si") + ", " //#ExtractFromDialer.MessageDelivered_si#,
-                                                + " " + SelectResultsRS.getInt("SingleResponseSurvey_si") + ", " //#ExtractFromDialer.SingleResponseSurvey_si#,
-                                                + " '" + escapeSQL(SelectResultsRS.getString("XMLResultStr_vch")) + "', " //<CFQUERYPARAM CFSQLTYPE="CF_SQL_VARCHAR" VALUE="#ExtractFromDialer.XMLResultStr_vch#">,
-                                                + " " + SelectResultsRS.getInt("IsOptIn_ti") + ", " //#ExtractFromDialer.IsOptIn_ti#,
-                                                + " " + CurrentBillingAmount + ", " //#CurrentBillingAmount#,
-                                                + " '" + SelectResultsRS.getString("DTS_UUID_vch") + "', " //'#ExtractFromDialer.DTS_UUID_vch#',
-                                                + " '" + escapeSQL(SelectResultsRS.getString("XMLControlString_vch")) + "', " // <CFQUERYPARAM CFSQLTYPE="CF_SQL_VARCHAR" VALUE="#ExtractFromDialer.XMLControlString_vch#">,
-                                                + " '" + escapeSQL(SelectResultsRS.getString("UserSpecifiedData_vch")) + "', " // <CFQUERYPARAM CFSQLTYPE="CF_SQL_VARCHAR" VALUE="#ExtractFromDialer.UserSpecifiedData_vch#">,
-                                                + " " + SelectResultsRS.getInt("FileSeqNumber_int") + ", " // <cfif ExtractFromDialer.FileSeqNumber_int NEQ "">#ExtractFromDialer.FileSeqNumber_int#<cfelse>NULL</cfif>,
-                                                + " " + SelectResultsRS.getInt("MainMessageLengthSeconds_int") + " " //#ExtractFromDialer.MainMessageLengthSeconds_int#
+                                                + " " + SelectResultsRS.getInt("RXCallDetailId_int") + ", " 
+                                                + " " + SelectResultsRS.getInt("DTSID_int") + ", "
+                                                + " " + SelectResultsRS.getInt("BatchId_bi") + ", " 
+                                                + " " + SelectResultsRS.getInt("PhoneId_int") + ", " 
+                                                + " " + SelectResultsRS.getInt("TotalObjectTime_int") + ", " 
+                                                + " " + SelectResultsRS.getInt("TotalCallTimeLiveTransfer_int") + ", " 
+                                                + " " + SelectResultsRS.getInt("TotalCallTime_int") + ", " 
+                                                + " " + SelectResultsRS.getInt("TotalConnectTime_int") + ", " 
+                                                + " " + SelectResultsRS.getInt("ReplayTotalCallTime_int") + ", " 
+                                                + " " + SelectResultsRS.getInt("TotalAnswerTime_int") + ", " 
+                                                + " " + SelectResultsRS.getInt("UserSpecifiedLineNumber_si") + ", " 
+                                                + " " + SelectResultsRS.getInt("NumberOfHoursToRescheduleRedial_si") + ", " 
+                                                + " " + SelectResultsRS.getInt("TransferStatusId_ti") + ", " 
+                                                + " " + SelectResultsRS.getInt("IsHangUpDetected_ti") + ", " 
+                                                + " " + SelectResultsRS.getInt("IsOptOut_ti") + ", " 
+                                                + " " + SelectResultsRS.getInt("IsMaxRedialsReached_ti") + ", " 
+                                                + " " + SelectResultsRS.getInt("IsRescheduled_ti") + ", " 
+                                                + " " + SelectResultsRS.getInt("CallResult_int") + ", " 
+                                                + " " + SelectResultsRS.getInt("SixSecondBilling_int") + ", " 
+                                                + " " + SelectResultsRS.getInt("SystemBilling_int") + ", " 
+                                                + " '" + SelectResultsRS.getString("RXCDLStartTime_dt") + "', " 
+                                                + " '" + SelectResultsRS.getString("CallStartTime_dt") + "', " 
+                                                + " '" + SelectResultsRS.getString("CallEndTime_dt") + "', " 
+                                                + " '" + SelectResultsRS.getString("CallStartTimeLiveTransfer_dt") + "', " 
+                                                + " '" + SelectResultsRS.getString("CallEndTimeLiveTransfer_dt") + "', " 
+                                                + " '" + SelectResultsRS.getString("CallResultTS_dt") + "', " 
+                                                + " '" + SelectResultsRS.getString("PlayFileStartTime_dt") + "', " 
+                                                + " '" + SelectResultsRS.getString("PlayFileEndTime_dt") + "', " 
+                                                + " '" + SelectResultsRS.getString("HangUpDetectedTS_dt") + "', " 
+                                                + " '" + SelectResultsRS.getString("Created_dt") + "', " 
+                                                + " '" + SelectResultsRS.getString("DialerName_vch") + "', " 
+                                               + " '" + ip + "', "
+                                                + " '" + SelectResultsRS.getString("CurrTS_vch") + "', " 
+                                                + " '" + SelectResultsRS.getString("CurrVoice_vch") + "', " 
+                                                + " '" + SelectResultsRS.getString("CurrTSLiveTransfer_vch") + "', " 
+                                                + " '" + SelectResultsRS.getString("CurrVoiceLiveTransfer_vch") + "', " 
+                                                + " '" + SelectResultsRS.getString("CurrCDP_vch") + "', " 
+                                                + " '" + SelectResultsRS.getString("CurrCDPLiveTransfer_vch") + "', " 
+                                                + " '" + escapeSQL(SelectResultsRS.getString("DialString_vch")) + "', " 
+                                                + " " + SelectResultsRS.getInt("RedialNumber_int") + ", " 
+                                                + " " + SelectResultsRS.getInt("TimeZone_ti") + ", " 
+                                                + " " + SelectResultsRS.getInt("MessageDelivered_si") + ", " 
+                                                + " " + SelectResultsRS.getInt("SingleResponseSurvey_si") + ", " 
+                                                + " '" + escapeSQL(SelectResultsRS.getString("XMLResultStr_vch")) + "', " 
+                                                + " " + SelectResultsRS.getInt("IsOptIn_ti") + ", " 
+                                                + " " + CurrentBillingAmount + ", " 
+                                                + " '" + SelectResultsRS.getString("DTS_UUID_vch") + "', " 
+                                                + " '" + escapeSQL(SelectResultsRS.getString("XMLControlString_vch")) + "', " 
+                                                + " '" + escapeSQL(SelectResultsRS.getString("UserSpecifiedData_vch")) + "', " 
+                                                + " " + SelectResultsRS.getInt("FileSeqNumber_int") + ", " 
+                                                + " " + SelectResultsRS.getInt("MainMessageLengthSeconds_int") + " " 
                                                 + " ) ";
      
                     SelectResultsRS.updateInt( "CallDetailsStatusId_ti", abs(ESID) );
@@ -328,8 +327,7 @@ public class ResultsReader extends Task<Integer>
     
             System.out.println("Dialer Just Completed is:" +ip);
             }// END of FOR Collections
-            // i++;
-            // System.out.println("Value of i is :" + i);}// END of FOR
+            
         } // END Of try block
         catch (SQLException ex)
         {
@@ -337,74 +335,7 @@ public class ResultsReader extends Task<Integer>
         System.out.println("SQLState: " + ex.getSQLState());
         System.out.println("VendorError: " + ex.getErrorCode());
         ex.printStackTrace();
-        /*try 
-            String QueryStringGlobalAlertLogs = "";
-            // String url = "jdbc:sqlserver://10.11.0.225:1433;database‌​Name=Alerts";
-            System.out.println("Loading the Driver for SQL Server at 10.11.0.225");
-            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            System.out.println("Anything printing??");*/
-            /*
-            SQLServerDataSource ds = new SQLServerDataSource();
-            ds.setUser("sa");
-            ds.setPassword("F6!RjYKB77P");
-            ds.setServerName("10.11.0.225");
-            ds.setPortNumber(1433);
-            ds.setDatabaseName("Alerts");
-            connRemoteforGlobal = ds.getConnection();
-            */
-            /*
-            Connection connRemoteforGlobal = DriverManager.getConnection("jdbc:sqlserver://10.11.0.225:1433;databaseName=Alerts;user=sa;password=F6!RjYKB77");
-            System.out.println("Test");
-            // Connection connRemoteforGlobal = DriverManager.getConnection(url;sa;F6!RjYKB77);
-
-            if(connRemoteforGlobal != null)
-            {
-            System.out.println("Connection Successful !");
-            }
-            // System.out.println("Checking the validity:"+connRemoteforGlobal.isValid(2));
-            QueryStringGlobalAlertLogs = " INSERT INTO [Alerts].[dbo].[Daily_Alerts] "
-                                                    + " ( "
-                                                    + " [ServerIP_vch], "
-                                                    + " [ENASubject_vch], "
-                                                    + " [ENAMessage_vch], "
-                                                    + " [TroubleshootingTips_vch], "
-                                                    + " [CGIDump_txt], "
-                                                    + " [HighPriority_bit], "
-                                                    + " [AlertType_si], "
-                                                    + " [Timestamp_dt], "
-                                                    + " [To_vch] "
-                                                    + " ) "
-                                      + " VALUES "
-                                                    + " ( "
-                                                    + " '2002' , " // ErrorNumber_int
-                                                    + " '10.11.0.162 ' , " //created_dt // " + dateFormat.format(date) + "
-                                                    + " 'testENAsubject', " //Subject_vch " + ex.getSQLState() + "
-                                                    + " 'testENAMessage', " //Message_VCH
-                                                    + " 'Test Troubleshooting Tips', " //TroubleshootingTips_vch
-                                                    + " 'testCGIDump' , " //Catchtype_vch " + ex.getSQLState() + "
-                                                    + " 'testhighpriority' ," //+ SelectResultsRS.getInt("CatchMessage_vch") + " + ex.getMessage() + "
-                                                    + " 'testalerttype', " //" + SelectResultsRS.getInt("CatchDetail_vch") + "
-                                                    + " '2013-10-18 08:02:55.113'," // SelectResultsRS.getInt("Host_vch")
-                                                    + " 'akhare@messagebroadcast.com', " //" + SelectResultsRS.getInt("Referer_vch") + "
-                                                    + " ) ";
         
-        
-        System.out.println("the length of the Query String for Error is :" +QueryStringGlobalAlertLogs.length());
-        System.out.println("Query Output :" +QueryStringGlobalAlertLogs);
-        
-        InsertGlobalResultsErrorLogStmt = connRemoteforGlobal.createStatement();
-        InsertGlobalResultsErrorLogStmt.executeUpdate(QueryStringGlobalAlertLogs);
-        
-        }
-        catch(SQLException ex2){
-                System.out.println("Stacktrace Below:");
-                ex2.printStackTrace();
-                System.out.println("Error Trace in Connection : " + ex2.getMessage());
-        }
-        catch(java.lang.ClassNotFoundException ed){
-        ed.printStackTrace();
-        System.out.println(ed.getMessage());
-        }*/
            
             try {
                 String QueryStringInsertIntoErrorLogs = "";
@@ -429,20 +360,20 @@ public class ResultsReader extends Task<Integer>
                 + " ) "
                 + " VALUES "
                 + " ( "
-                //+ " NULL, " // ErrorLogIdInt
-                + " '2002' , " // ErrorNumber_int
-                + " '"+dateFormat.format(date)+" ' , " //created_dt // " + dateFormat.format(date) + "
-                + " 'SimpleX Error Notification', " //Subject_vch
-                + " 'Error Simple X Queue', " //Message_VCH
-                + " 'No Troubleshooting Tips Specified', " //TroubleshootingTips_vch
-                + " '" + ex.getSQLState() + "' , " //Catchtype_vch " + ex.getSQLState() + "
-                + " '" + ex.getMessage() + "' ," //+ SelectResultsRS.getInt("CatchMessage_vch") + " + ex.getMessage() + "
-                + " NULL, " //" + SelectResultsRS.getInt("CatchDetail_vch") + "
-                + " 'ebmdevii.messagebroadcast.com'," // SelectResultsRS.getInt("Host_vch")
-                + " NULL, " //" + SelectResultsRS.getInt("Referer_vch") + "
-                + " 'CFSCHEDULE', " //" + SelectResultsRS.getInt("UserAgent_vch") + "
-                + " 'NULL', " //" + SelectResultsRS.getInt("Patch_vch") + "
-                + " 'DBSOURCE=BishopDev' " //" + SelectResultsRS.getInt("Querystring_vch") + "
+                //+ " NULL, " 
+                + " '2002' , " 
+                + " '"+dateFormat.format(date)+" ' , " 
+                + " 'SimpleX Error Notification', " 
+                + " 'Error Simple X Queue', " 
+                + " 'No Troubleshooting Tips Specified', " 
+                + " '" + ex.getSQLState() + "' , " 
+                + " '" + ex.getMessage() + "' ," 
+                + " NULL, " 
+                + " 'ebmdevii.messagebroadcast.com'," 
+                + " NULL, " 
+                + " 'CFSCHEDULE', " 
+                + " 'NULL', " 
+                + " 'DBSOURCE=BishopDev' " 
                 + " ) ";
                 System.out.println("the length of the Query String for Error is :" +QueryStringInsertIntoErrorLogs.length());
                 System.out.println("Query Output :" +QueryStringInsertIntoErrorLogs);
@@ -459,8 +390,7 @@ public class ResultsReader extends Task<Integer>
             System.out.println("Stacktrace Below:");
             e.printStackTrace();
             }
-           // i++;
-           // System.out.println("Value of i is :" + i);
+           
 //} // ENd Of While (i <= 5)
 return iterations;
 }
